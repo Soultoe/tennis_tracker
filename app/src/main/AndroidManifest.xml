@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".remote_results"
+            android:label="@string/title_activity_remote_results"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".local_results"
+            android:label="@string/title_activity_local_results"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
