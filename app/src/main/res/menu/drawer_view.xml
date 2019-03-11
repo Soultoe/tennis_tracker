@@ -2,7 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/qqc"
-            android:title="QQC" />
+            android:id="@+id/main_activity"
+            android:title="New Match" />
+        <item
+            android:id="@+id/local_results_activity"
+            android:title="Local Results" />
+        <item
+            android:id="@+id/remote_results_activity"
+            android:title="Remote Results" />
     </group>
 </menu>
