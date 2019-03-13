@@ -55,6 +55,27 @@ public class MainActivity extends AppCompatActivity {
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
 
+                        switch (menuItem.getItemId()) {
+                            case R.id.main_activity:
+                                System.out.println("Launch Main Activity");
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                break;
+
+                            case R.id.local_results_activity:
+                                System.out.println("Launch Local Results Activity");
+                                Intent intent2 = new Intent(getApplicationContext(), local_results.class);
+                                startActivity(intent2);
+                                break;
+
+                            case R.id.remote_results_activity:
+                                System.out.println("Launch Remote Results Activity");
+                                Intent intent3 = new Intent(getApplicationContext(), remote_results.class);
+                                startActivity(intent3);
+                                break;
+                        }
+
+
                         return true;
                     }
                 });
@@ -76,25 +97,33 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
+        System.out.println("In onOptionsItemSelected");
+        System.out.println(item.getItemId());
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
+                System.out.println("On drawer");
                 return true;
 
             case R.id.action_settings:
+                System.out.println("On Settings");
                 return true;
 
             case R.id.main_activity:
+                System.out.println("Launch Main Activity");
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
 
             case R.id.local_results_activity:
+                System.out.println("Launch Local Results Activity");
                 Intent intent2 = new Intent(this, local_results.class);
                 startActivity(intent2);
                 return true;
 
             case R.id.remote_results_activity:
+                System.out.println("Launch Remote Results Activity");
                 Intent intent3 = new Intent(this, remote_results.class);
                 startActivity(intent3);
                 return true;
