@@ -5,10 +5,65 @@
     android:layout_height="match_parent"
     tools:context=".new_match_players">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/players"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="70dip"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/p1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/p1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1: "
+                android:textSize="20dip" />
+
+            <EditText
+                android:id="@+id/p1_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dip" />
+                <!--android:ems="10"-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/p2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/p2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1: "
+                android:textSize="20dip" />
+
+            <EditText
+                android:id="@+id/p2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dip" />
+            <!--android:ems="10"-->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/b_start_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start game" />
+
+
+    </LinearLayout>
 
 </FrameLayout>

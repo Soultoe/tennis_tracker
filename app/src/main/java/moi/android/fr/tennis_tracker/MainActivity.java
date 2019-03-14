@@ -13,11 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private DrawerLayout drawerLayout;
+    private main_menu f_menu;
 
 
     @Override
@@ -80,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+        f_menu = new main_menu();
+        getSupportFragmentManager().beginTransaction().add(R.id.frag_main, f_menu).commit();
     }
 
 
@@ -109,26 +115,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 System.out.println("On Settings");
                 return true;
-
-            case R.id.main_activity:
-                System.out.println("Launch Main Activity");
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.local_results_activity:
-                System.out.println("Launch Local Results Activity");
-                Intent intent2 = new Intent(this, local_results.class);
-                startActivity(intent2);
-                return true;
-
-            case R.id.remote_results_activity:
-                System.out.println("Launch Remote Results Activity");
-                Intent intent3 = new Intent(this, remote_results.class);
-                startActivity(intent3);
-                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+    // APP LOGIC
 }

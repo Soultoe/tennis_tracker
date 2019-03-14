@@ -5,10 +5,32 @@
     android:layout_height="match_parent"
     tools:context=".main_menu">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/main_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="70dip"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Game" />
+
+        <Button
+            android:id="@+id/local_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Local Results" />
+
+        <Button
+            android:id="@+id/remote_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remote Results" />
+
+    </LinearLayout>
+
 
 </FrameLayout>
