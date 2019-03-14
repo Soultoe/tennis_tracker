@@ -5,10 +5,154 @@
     android:layout_height="match_parent"
     tools:context=".new_match_score">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/scores"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="70dip"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/score_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/score_1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1: "
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_set_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_set_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_set_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_set_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_1_set_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/score_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/score_2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1: "
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_set_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_set_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_set_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_set_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/score_2_set_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dip" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/point_p1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Point P1" />
+
+        <Button
+            android:id="@+id/point_p2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Point P2" />
+
+        <Button
+            android:id="@+id/localise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dip"
+            android:text="Localise" />
+
+        <Button
+            android:id="@+id/picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take pictures" />
+
+
+    </LinearLayout>
 
 </FrameLayout>

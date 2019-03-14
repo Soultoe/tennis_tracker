@@ -58,7 +58,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/b_start_game"
+            android:id="@+id/start_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start game" />
