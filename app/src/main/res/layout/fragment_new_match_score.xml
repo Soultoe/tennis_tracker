@@ -29,6 +29,7 @@
                 android:id="@+id/score_1_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="0"
                 android:textSize="20dip" />
 
@@ -88,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:textStyle="bold"
                 android:textSize="20dip" />
 
             <TextView
