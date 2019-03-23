@@ -214,16 +214,37 @@ public class new_match_score extends Fragment {
         }
 
         for (int i = 0; i < 4; i++) {
-            if (sets_1.get(i) == 7) {
-                sets_1.set(i, 6);
-                sets_1.set(i + 1, 1);
-                set_point = 6;
-                current_set += 1;
+            if (sets_1.get(i) >= 7) {
+                if(sets_2.get(i) >= 5){
+                    if (sets_1.get(i) == 8) {
+                        sets_1.set(i, 7);
+                        sets_1.set(i+1, 1);
+                        set_point = 7;
+                        current_set += 1;
+                    }
+                }
+                else {
+                    sets_1.set(i, 6);
+                    sets_1.set(i + 1, 1);
+                    set_point = 6;
+                    current_set += 1;
+                }
+
             } else if (sets_2.get(i) == 7) {
-                sets_2.set(i, 6);
-                sets_2.set(i + 1, 1);
-                set_point = 6;
-                current_set += 1;
+                if(sets_1.get(i) >5){
+                    if(sets_2.get(i) == 8){
+                        sets_2.set(i, 7);
+                        sets_2.set(i+1, 1);
+                        set_point = 7;
+                        current_set += 1;
+                    }
+                }
+                else {
+                    sets_2.set(i, 6);
+                    sets_2.set(i + 1, 1);
+                    set_point = 6;
+                    current_set += 1;
+                }
             }
         }
 
