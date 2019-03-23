@@ -293,6 +293,8 @@ public class new_match_score extends Fragment {
 
         updateText(other_score, other_player);
         updateText(score, player);
+
+        matchToString();
     }
 
     public int getTextScore(int player) {
@@ -344,6 +346,28 @@ public class new_match_score extends Fragment {
                 point.setText("Av" + "");
                 break;
         }
+    }
+
+    public String matchToString(){
+        String s = "";
+
+        s += point_1.getText() + ",";
+        for(int i = 0; i <5; i ++){
+            s += sets_1.get(i) + ",";
+        }
+        s = s.substring(0, s.length() - 1);
+        s += "\n";
+
+        s += point_2.getText() + ",";
+        for(int i = 0; i <5; i ++){
+            s += sets_2.get(i) + ",";
+        }
+        s = s.substring(0, s.length() - 1);
+        s += "\n";
+
+        System.out.println("\n\n" + s);
+
+        return s;
     }
 
 }
