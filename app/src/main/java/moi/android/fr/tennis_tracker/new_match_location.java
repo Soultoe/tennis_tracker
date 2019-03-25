@@ -1,5 +1,6 @@
 package moi.android.fr.tennis_tracker;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,7 +28,8 @@ public class new_match_location extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        // Create the Fragment Map
+
         return inflater.inflate(R.layout.fragment_new_match_location, container, false);
     }
-
 }
