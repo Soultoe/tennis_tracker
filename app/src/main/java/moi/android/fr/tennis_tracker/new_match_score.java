@@ -390,16 +390,14 @@ public class new_match_score extends Fragment {
         String s = "";
 
         for (int i = 0; i < 5; i++) {
-            s += sets_1.get(i) + ",";
+            s += sets_1.get(i);
         }
         s = s.substring(0, s.length() - 1);
-        s += "\n";
 
         for (int i = 0; i < 5; i++) {
-            s += sets_2.get(i) + ",";
+            s += sets_2.get(i);
         }
         s = s.substring(0, s.length() - 1);
-        s += "\n";
 
         System.out.println("\n\n" + s);
 

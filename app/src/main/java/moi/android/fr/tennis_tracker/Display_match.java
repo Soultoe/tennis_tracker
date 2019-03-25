@@ -19,9 +19,13 @@ public class Display_match extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static Display_match newInstance(String param1, String param2) {
-        Display_match fragment = new Display_match();
-        return fragment;
+    public static Display_match newInstance() {
+        return new Display_match();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override
@@ -35,14 +39,13 @@ public class Display_match extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_display_match, container, false);
 
-        player1_name = v.findViewById(R.id.player1_name);
         player1_set1 = v.findViewById(R.id.player1_set1);
         player1_set2 = v.findViewById(R.id.player1_set2);
         player1_set3 = v.findViewById(R.id.player1_set3);
         player1_set4 = v.findViewById(R.id.player1_set4);
         player1_set5 = v.findViewById(R.id.player1_set5);
 
-        player2_name = v.findViewById(R.id.player2_name);
+
         player2_set1 = v.findViewById(R.id.player2_set1);
         player2_set2 = v.findViewById(R.id.player2_set2);
         player2_set3 = v.findViewById(R.id.player2_set3);
@@ -55,13 +58,18 @@ public class Display_match extends Fragment {
     }
 
     public void setPlayerName(int player, String name){
+
+        System.out.println("SWAG SHIT: " + name + ", " + player);
+        TextView player1_name = getView().findViewById(R.id.player1_name);
+        TextView player2_name = getView().findViewById(R.id.player2_name);
+
         if(player==1)
             player1_name.setText(name);
         else
             player2_name.setText(name);
     }
 
-    public void setSetScore(int setNumber, int player, int setScore){
+    public void setSetScore(int setNumber, int player, char setScore){
 
         if(player==1){
             switch (setNumber){

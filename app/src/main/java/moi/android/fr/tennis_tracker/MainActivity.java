@@ -96,13 +96,11 @@ public class MainActivity extends AppCompatActivity {
         //SQLite database
         mydb = new DBHelper(this);
 
-        mydb.insertMatch("gab", "romain", "606162");
-
-        ArrayList<String> array_list = mydb.getAll();
+        /*ArrayList<String> array_list = mydb.getAll();
 
         for(String str : array_list)
             System.out.println("IN THE RESULTS: " + str);
-
+        */
 
 
     }

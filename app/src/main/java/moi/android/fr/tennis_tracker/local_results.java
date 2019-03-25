@@ -25,31 +25,49 @@ public class local_results extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        match1 = new Display_match();
+        getSupportFragmentManager().beginTransaction().add(R.id.match1, match1).commit();
 
         results = findViewById(R.id.match_results);
 
         mydb = new DBHelper(this);
-        ArrayList<String> array_list = mydb.getAll();
+        ArrayList<ArrayList<String>> array_list = mydb.getAll();
+        String rez = "";
 
-        for(String str : array_list) {
-            System.out.println("LOCAL: " + str);
-            results.setText(String.format(" %s \n %s \n ", results.getText(), str));
-        }
+        String name1 = array_list.get(0).get(1);
+        String name2 = array_list.get(0).get(3);
+        String score = array_list.get(0).get(2);
 
-        //getSupportFragmentManager().beginTransaction().add(R.id.frag_main, f_menu).commit();
-        match1 = new Display_match();
+        System.out.println("SWAG NAME1: " + name1);
+        System.out.println("SWAG NAME2: " + name2);
+        System.out.println("SWAG SCORE: " + score);
 
+        results.setText(String.format(" %s \n %s \n ", results.getText(), name1+ ", " +name2+ ", " +score));
 
+        /*char set1_p1 = score.charAt(0);
+        char set2_p1 = score.charAt(1);
+        char set3_p1 = score.charAt(2);
+        char set4_p1 = score.charAt(3);
+        char set5_p1 = score.charAt(4);
 
+        char set1_p2 = score.charAt(5);
+        char set2_p2 = score.charAt(6);
+        char set3_p2 = score.charAt(7);
+        char set4_p2 = score.charAt(8);
+        char set5_p2 = score.charAt(9);*/
 
+        /*match1.setPlayerName(1, name1);
+        match1.setPlayerName(2,name2);
+        match1.setSetScore(1,1,set1_p1);
+        match1.setSetScore(2,1,set2_p1);
+        match1.setSetScore(3,1,set3_p1);
+        match1.setSetScore(4,1,set4_p1);
+        match1.setSetScore(5,1,set5_p1);
+        match1.setSetScore(1,2,set1_p2);
+        match1.setSetScore(2,2,set2_p2);
+        match1.setSetScore(3,2,set3_p2);
+        match1.setSetScore(4,2,set4_p2);
+        match1.setSetScore(5,2,set5_p2);*/
     }
 
 }
