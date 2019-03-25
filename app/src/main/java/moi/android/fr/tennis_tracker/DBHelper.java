@@ -84,12 +84,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor res =  db.rawQuery( "select * from tennis_match", null );
         res.moveToFirst();
 
-        array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
+        //array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
 
-        /*while(!res.isAfterLast()){
-            array_list.add(res.getString(res.getColumnIndex(MATCH_COLUMN_ID)));
+        while(!res.isAfterLast()){
+            array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
             res.moveToNext();
-        }*/
+        }
         return array_list;
     }
 }
