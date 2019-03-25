@@ -1,6 +1,7 @@
 package moi.android.fr.tennis_tracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,6 +50,15 @@ public class main_menu extends Fragment {
                 fragmentManager.addToBackStack("Replace fragment");
                 fragmentManager.replace(R.id.frag_main, new_match_players);
                 fragmentManager.commit();
+            }
+        });
+
+        b_local_results = v.findViewById(R.id.local_results);
+        b_local_results.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getActivity(), local_results.class);
+                startActivity(intent2);
             }
         });
 
