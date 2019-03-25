@@ -30,6 +30,8 @@ public class new_match_score extends Fragment {
     private int current_set;
     private ArrayList<Integer> sets_1;
     private ArrayList<Integer> sets_2;
+    private int player_1_nb_set_won;
+    private int player_2_nb_set_won;
     private TextView set_1_1, set_2_1, set_3_1, set_4_1, set_5_1;
     private TextView set_1_2, set_2_2, set_3_2, set_4_2, set_5_2;
 
@@ -62,6 +64,10 @@ public class new_match_score extends Fragment {
         sets_2.add(0);
         sets_2.add(0);
         current_set = 0;
+
+        player_1_nb_set_won = 0;
+        player_2_nb_set_won = 0;
+
         victory = false;
     }
 
@@ -144,7 +150,7 @@ public class new_match_score extends Fragment {
         return v;
     }
 
-    public void addSet(int player) {
+    public void addToSet(int player) {
         TextView t = null;
         TextView other_t = null;
         int set_point = 0;
@@ -230,35 +236,37 @@ public class new_match_score extends Fragment {
 
         for (int i = 0; i < 4; i++) {
             if (sets_1.get(i) >= 7) {
-                if(sets_2.get(i) >= 5){
+                if (sets_2.get(i) >= 5) {
                     if (sets_1.get(i) == 8) {
                         sets_1.set(i, 7);
-                        sets_1.set(i+1, 1);
+                        sets_1.set(i + 1, 1);
                         set_point = 7;
                         current_set += 1;
+                        player_1_nb_set_won += 1;
                     }
-                }
-                else {
+                } else {
                     sets_1.set(i, 6);
                     sets_1.set(i + 1, 1);
                     set_point = 6;
                     current_set += 1;
+                    player_1_nb_set_won += 1;
                 }
 
             } else if (sets_2.get(i) == 7) {
-                if(sets_1.get(i) >5){
-                    if(sets_2.get(i) == 8){
+                if (sets_1.get(i) > 5) {
+                    if (sets_2.get(i) == 8) {
                         sets_2.set(i, 7);
-                        sets_2.set(i+1, 1);
+                        sets_2.set(i + 1, 1);
                         set_point = 7;
                         current_set += 1;
+                        player_2_nb_set_won += 1;
                     }
-                }
-                else {
+                } else {
                     sets_2.set(i, 6);
                     sets_2.set(i + 1, 1);
                     set_point = 6;
                     current_set += 1;
+                    player_2_nb_set_won += 1;
                 }
             }
         }
@@ -268,48 +276,53 @@ public class new_match_score extends Fragment {
 
 
     public void addPoint(int player) {
-        int score = getTextScore(player);
 
-        int other_player = 0;
-        if (player == 1) {
-            other_player = 2;
-        } else {
-            other_player = 1;
-        }
-        int other_score = getTextScore(other_player);
+        if (!isFinished()) {
+            int score = getTextScore(player);
 
-        System.out.println(score);
+            int other_player = 0;
+            if (player == 1) {
+                other_player = 2;
+            } else {
+                other_player = 1;
+            }
+            int other_score = getTextScore(other_player);
 
-        if (score == 0) {
-            score += 1;
-        } else if (score == 1) {
-            score += 1;
-        } else if (score == 2) {
-            score += 1;
-        } else if (score == 3) { //has 40
-            if (other_score <= 2) { // ennemy has 0, 15, 30
+            System.out.println(score);
+
+            if (score == 0) {
+                score += 1;
+            } else if (score == 1) {
+                score += 1;
+            } else if (score == 2) {
+                score += 1;
+            } else if (score == 3) { //has 40
+                if (other_score <= 2) { // ennemy has 0, 15, 30
+                    //win game
+                    score = 0;
+                    other_score = 0;
+
+                    addToSet(player);
+                } else if (other_score == 3) { // enemy has 40
+                    score += 1; // player advantage
+                } else if (other_score == 4) { // ennemy has advantage
+                    other_score -= 1; // ennemy looses advantage
+                }
+            } else if (score == 4) { // has advantage
                 //win game
                 score = 0;
                 other_score = 0;
 
-                addSet(player);
-            } else if (other_score == 3) { // enemy has 40
-                score += 1; // player advantage
-            } else if (other_score == 4) { // ennemy has advantage
-                other_score -= 1; // ennemy looses advantage
+                addToSet(player);
             }
-        } else if (score == 4) { // has advantage
-            //win game
-            score = 0;
-            other_score = 0;
 
-            addSet(player);
+            updateText(other_score, other_player);
+            updateText(score, player);
+
+            matchToString();
+
         }
 
-        updateText(other_score, other_player);
-        updateText(score, player);
-
-        matchToString();
     }
 
     public int getTextScore(int player) {
@@ -363,18 +376,26 @@ public class new_match_score extends Fragment {
         }
     }
 
-    public String matchToString(){
+    public boolean isFinished() {
+
+        if (player_1_nb_set_won == 3 || player_2_nb_set_won == 3) {
+            matchToString();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String matchToString() {
         String s = "";
 
-        s += point_1.getText() + ",";
-        for(int i = 0; i <5; i ++){
+        for (int i = 0; i < 5; i++) {
             s += sets_1.get(i) + ",";
         }
         s = s.substring(0, s.length() - 1);
         s += "\n";
 
-        s += point_2.getText() + ",";
-        for(int i = 0; i <5; i ++){
+        for (int i = 0; i < 5; i++) {
             s += sets_2.get(i) + ",";
         }
         s = s.substring(0, s.length() - 1);
