@@ -16,6 +16,7 @@ public class local_results extends AppCompatActivity {
 
     public TextView results;
     public DBHelper mydb;
+    public Display_match match1, match2, match3, match4, match5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,11 @@ public class local_results extends AppCompatActivity {
             System.out.println("LOCAL: " + str);
             results.setText(String.format(" %s \n %s \n ", results.getText(), str));
         }
+
+        //getSupportFragmentManager().beginTransaction().add(R.id.frag_main, f_menu).commit();
+        match1 = new Display_match();
+
+
 
 
     }
