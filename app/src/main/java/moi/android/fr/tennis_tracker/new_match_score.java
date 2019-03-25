@@ -368,6 +368,8 @@ public class new_match_score extends Fragment {
         System.out.println("\n\n" + s);
 
         return s;
+
+        //UPDATE table set col = 1 WHERE id = (SELECT MAX(id) FROM table)
     }
 
 }

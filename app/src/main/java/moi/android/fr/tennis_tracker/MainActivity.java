@@ -1,6 +1,7 @@
 package moi.android.fr.tennis_tracker;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,12 +15,17 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private DrawerLayout drawerLayout;
     private main_menu f_menu;
+    public DBHelper mydb;
+    public TextView res;
 
 
     @Override
@@ -86,6 +92,19 @@ public class MainActivity extends AppCompatActivity {
 
         f_menu = new main_menu();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_main, f_menu).commit();
+
+        //SQLite database
+        mydb = new DBHelper(this);
+
+        mydb.insertMatch("gab", "romain", "606162");
+
+        ArrayList<String> array_list = mydb.getAll();
+
+        for(String str : array_list)
+            System.out.println("IN THE RESULTS: " + str);
+
+
+
     }
 
 
