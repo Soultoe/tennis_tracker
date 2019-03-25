@@ -45,10 +45,35 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean updateMatchScore(String score){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("score", score);
+
+        //UPDATE table set col = 1 WHERE id = (SELECT MAX(id) FROM table)
+        //update(TABLENAME, contentValues,"ID=?",new String[] {id});
+
+        String lastId = getLastId();
+        System.out.println("THE LAST ID: " + lastId);
+
+        int myInt = db.update("tennis_match",contentValues,"ID=?",new String[] {lastId});
+        System.out.println("UPDATE SUCCESSFUL: " + myInt);
+
+        return true;
+    }
+
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from tennis_match where id="+id+"", null );
         return res;
+    }
+
+    public String getLastId(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select id from tennis_match where id = (select MAX(id) from tennis_match)", null );
+        res.moveToFirst();
+
+        return res.getString(0);
     }
 
     public ArrayList<String> getAll() {

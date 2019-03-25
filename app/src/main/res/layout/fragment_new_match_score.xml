@@ -29,9 +29,9 @@
                 android:id="@+id/score_1_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:text="0"
-                android:textSize="20dip" />
+                android:textSize="20dip"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_1_set_1"
@@ -70,7 +70,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/score_2"
             android:layout_width="match_parent"
@@ -89,8 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textStyle="bold"
-                android:textSize="20dip" />
+                android:textSize="20dip"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_2_set_1"
@@ -129,6 +128,7 @@
 
         </LinearLayout>
 
+
         <Button
             android:id="@+id/point_p1"
             android:layout_width="match_parent"
@@ -153,6 +153,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Take pictures" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save game" />
 
 
     </LinearLayout>

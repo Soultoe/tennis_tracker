@@ -20,7 +20,7 @@ import java.util.List;
 
 public class new_match_score extends Fragment {
 
-    private Button b_picture, b_localise;
+    private Button b_picture, b_localise, save;
     private new_match_location new_match_location;
     private new_match_pictures new_match_pictures;
 
@@ -32,6 +32,9 @@ public class new_match_score extends Fragment {
     private ArrayList<Integer> sets_2;
     private TextView set_1_1, set_2_1, set_3_1, set_4_1, set_5_1;
     private TextView set_1_2, set_2_2, set_3_2, set_4_2, set_5_2;
+
+    private boolean victory;
+    public DBHelper mydb;
 
     public new_match_score() {
         // Required empty public constructor
@@ -59,6 +62,7 @@ public class new_match_score extends Fragment {
         sets_2.add(0);
         sets_2.add(0);
         current_set = 0;
+        victory = false;
     }
 
     @Override
@@ -125,6 +129,17 @@ public class new_match_score extends Fragment {
         set_4_2 = v.findViewById(R.id.score_2_set_4);
         set_5_2 = v.findViewById(R.id.score_2_set_5);
 
+        //SQLite part
+        mydb = new DBHelper(getActivity());
+
+        save = v.findViewById(R.id.save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Add to database
+                mydb.updateMatchScore(matchToString());
+            }
+        });
 
         return v;
     }
@@ -368,8 +383,6 @@ public class new_match_score extends Fragment {
         System.out.println("\n\n" + s);
 
         return s;
-
-        //UPDATE table set col = 1 WHERE id = (SELECT MAX(id) FROM table)
     }
 
 }
