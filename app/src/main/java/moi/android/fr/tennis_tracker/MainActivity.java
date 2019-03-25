@@ -20,8 +20,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-
     private DrawerLayout drawerLayout;
     private main_menu f_menu;
     public DBHelper mydb;

@@ -12,13 +12,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class new_match_score extends Fragment {
+public class new_match_score extends Fragment implements OnMapReadyCallback  {
 
     private Button b_picture, b_localise, save;
     private new_match_location new_match_location;
@@ -81,12 +89,16 @@ public class new_match_score extends Fragment {
         b_localise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 System.out.println("Start Game in Fragment");
                 new_match_location = new new_match_location();
                 FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
                 fragmentManager.addToBackStack("Replace fragment");
                 fragmentManager.replace(R.id.frag_main, new_match_location);
                 fragmentManager.commit();
+
+                new_match_location = (new_match_location) getFragmentManager().findFragmentById(R.id.map);
+//                new_match_location.getMapAsync(this);
             }
         });
 
@@ -149,6 +161,12 @@ public class new_match_score extends Fragment {
 
         return v;
     }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+
+    }
+
 
     public void addToSet(int player) {
         TextView t = null;
