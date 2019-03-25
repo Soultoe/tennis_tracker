@@ -76,8 +76,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return res.getString(0);
     }
 
-    public ArrayList<String> getAll() {
-        ArrayList<String> array_list = new ArrayList<String>();
+    public ArrayList<ArrayList<String>> getAll() {
+        ArrayList<ArrayList<String>> array_list = new ArrayList<>();
+        ArrayList<String> buffer = new ArrayList<>();
 
         //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -87,7 +88,11 @@ public class DBHelper extends SQLiteOpenHelper {
         //array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
 
         while(!res.isAfterLast()){
-            array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
+            //array_list.add("Player1: " + res.getString(1)+ ", Player2: " + res.getString(2)+ ", Score: " + res.getString(3));
+            buffer.add(res.getString(1));
+            buffer.add(res.getString(2));
+            buffer.add(res.getString(3));
+            array_list.add(buffer);
             res.moveToNext();
         }
         return array_list;
