@@ -1,9 +1,6 @@
 package moi.android.fr.tennis_tracker;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -12,18 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class new_match_score extends Fragment implements OnMapReadyCallback  {
@@ -45,6 +35,9 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
 
     private boolean victory;
     public DBHelper mydb;
+
+    private MapFragment mapFragment;
+    private GoogleMap googleMap;
 
     public new_match_score() {
         // Required empty public constructor
@@ -97,8 +90,10 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
                 fragmentManager.replace(R.id.frag_main, new_match_location);
                 fragmentManager.commit();
 
-                new_match_location = (new_match_location) getFragmentManager().findFragmentById(R.id.map);
-//                new_match_location.getMapAsync(this);
+                // Map
+
+                // Create the Fragment Map
+                new_match_location = new_match_location.newInstance();
             }
         });
 
@@ -159,12 +154,22 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
             }
         });
 
+
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        if(mapFragment != null) {
+            mapFragment.getMapAsync(this);
+            System.out.println("Map Async Call");
+        }
+
+
+
+
         return v;
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
-
+        System.out.println("In the _score");
     }
 
 
