@@ -9,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -19,7 +22,6 @@ import java.util.ArrayList;
 public class new_match_score extends Fragment implements OnMapReadyCallback  {
 
     private Button b_picture, b_localise, save;
-    private new_match_location new_match_location;
     private new_match_pictures new_match_pictures;
 
     private Button b_point_p1, b_point_p2;
@@ -78,30 +80,11 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_new_match_score, container, false);
 
-        b_localise = v.findViewById(R.id.localise);
-        b_localise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                System.out.println("Start Game in Fragment");
-                new_match_location = new new_match_location();
-                FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
-                fragmentManager.addToBackStack("Replace fragment");
-                fragmentManager.replace(R.id.frag_main, new_match_location);
-                fragmentManager.commit();
-
-                // Map
-
-                // Create the Fragment Map
-                new_match_location = new_match_location.newInstance();
-            }
-        });
-
         b_picture = v.findViewById(R.id.picture);
         b_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Start Game in Fragment");
+                System.out.println("Start Pictures in Fragment");
                 new_match_pictures = new new_match_pictures();
                 FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
                 fragmentManager.addToBackStack("Replace fragment");
@@ -155,13 +138,12 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
         });
 
 
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        System.out.println("Map Call: " + mapFragment);
         if(mapFragment != null) {
-            mapFragment.getMapAsync(this);
             System.out.println("Map Async Call");
+            mapFragment.getMapAsync(this);
         }
-
-
 
 
         return v;
@@ -169,6 +151,13 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
 
     @Override
     public void onMapReady(GoogleMap map) {
+        googleMap = map;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
         System.out.println("In the _score");
     }
 
