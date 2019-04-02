@@ -6,8 +6,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class remote_results extends AppCompatActivity {
+
+    public TextView results;
+    public DBHelper mydb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +22,20 @@ public class remote_results extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        results = findViewById(R.id.match_results_2);
+
+        mydb = new DBHelper(this);
+        ArrayList<ArrayList<String>> array_list = mydb.getAll();
+        String rez = "";
+
+        String name1, name2, score;
+
+        for (int i = 0; i < array_list.size(); i++) {
+            name1 = array_list.get(0).get(1);
+            name2 = array_list.get(0).get(3);
+            score = array_list.get(0).get(2);
+            results.setText(String.format(" %s \n %s \n ", results.getText(), "Player1: " + name1 + "\nPlayer2: " + name2 + "\nScore: " + score));
+        }
     }
 
 }
