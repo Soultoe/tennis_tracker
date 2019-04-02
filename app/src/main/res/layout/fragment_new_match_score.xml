@@ -142,16 +142,10 @@
             android:text="Point P2" />
 
         <Button
-            android:id="@+id/localise"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="140dip"
-            android:text="Localise" />
-
-        <Button
             android:id="@+id/picture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dip"
             android:text="Take pictures" />
 
         <Button
@@ -160,6 +154,9 @@
             android:layout_height="wrap_content"
             android:text="Save game" />
 
+        <include layout="@layout/fragment_map" />
     </LinearLayout>
+
+
 
 </FrameLayout>
