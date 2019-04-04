@@ -62,6 +62,15 @@ public class main_menu extends Fragment {
             }
         });
 
+        b_remote_results = v.findViewById(R.id.remote_results);
+        b_remote_results.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getActivity(), remote_results.class);
+                startActivity(intent2);
+            }
+        });
+
         return v;
     }
 
