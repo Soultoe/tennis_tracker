@@ -33,10 +33,5 @@ public class MapFragment extends Fragment {
     }
 
     public void getMapAsync(new_match_score new_match_score) {
-        System.out.println("In MapFragment");
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(37, -122))
-                .title("Marker"));
     }
 }
