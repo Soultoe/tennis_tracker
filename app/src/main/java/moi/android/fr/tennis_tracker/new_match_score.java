@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -40,6 +41,10 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
 
     private MapFragment mapFragment;
     private GoogleMap googleMap;
+
+    private double lat;
+    private double lon;
+    private Marker markerClick;
 
     public new_match_score() {
         // Required empty public constructor
@@ -138,11 +143,11 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
         });
 
 
-        mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         System.out.println("Map Call: " + mapFragment);
         if(mapFragment != null) {
-            System.out.println("Map Async Call");
-            mapFragment.getMapAsync(this);
+            mapFragment.getMapAsync(new_match_score.this);
         }
 
 
@@ -153,12 +158,20 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
     public void onMapReady(GoogleMap map) {
         googleMap = map;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                lat = latLng.latitude;
+                lon = latLng.longitude;
 
-        System.out.println("In the _score");
+                if (markerClick != null) {
+                    markerClick.remove();
+                }
+                markerClick = googleMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(latLng.latitude, latLng.longitude))
+                        .title("Match"));
+            }
+        });
     }
 
 
@@ -411,7 +424,14 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
         }
         s = s.substring(0, s.length() - 1);
 
-        System.out.println("\n\n" + s);
+        return s;
+    }
+
+    public String localisationToString(){
+        String s = "";
+
+        s += String.valueOf(lat);
+        s += String.valueOf(lon);
 
         return s;
     }
