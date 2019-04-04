@@ -80,7 +80,7 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_new_match_score, container, false);
 
-        b_picture = v.findViewById(R.id.picture);
+        /*b_picture = v.findViewById(R.id.picture);
         b_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class new_match_score extends Fragment implements OnMapReadyCallback  {
                 fragmentManager.replace(R.id.frag_main, new_match_pictures);
                 fragmentManager.commit();
             }
-        });
+        });*/
 
         b_point_p1 = v.findViewById(R.id.point_p1);
         b_point_p1.setOnClickListener(new View.OnClickListener() {

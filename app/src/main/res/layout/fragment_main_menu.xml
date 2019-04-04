@@ -30,6 +30,12 @@
             android:layout_height="wrap_content"
             android:text="Remote Results" />
 
+        <Button
+            android:id="@+id/picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add pictures" />
+
     </LinearLayout>
 
 

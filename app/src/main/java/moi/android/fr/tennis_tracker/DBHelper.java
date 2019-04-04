@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -27,6 +30,11 @@ public class DBHelper extends SQLiteOpenHelper {
                 "create table if not exists tennis_match " +
                         "(id integer primary key, player1 text,player2 text,score text)"
         );
+
+        db.execSQL(
+                "create table if not exists pictures " +
+                        "(id integer primary key autoincrement, image BLOB)"
+        );
     }
 
     @Override
@@ -42,6 +50,15 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("player2", p2);
         contentValues.put("score", score);
         db.insert("tennis_match", null, contentValues);
+        return true;
+    }
+
+    public boolean insertPicture(Bitmap image){
+        SQLiteDatabase db = this.getWritableDatabase();
+        byte[] inBytes = DbBitmapUtility.getBytes(image);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("image", inBytes);
+        db.insert("pictures", null, contentValues);
         return true;
     }
 
@@ -97,4 +114,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return array_list;
     }
+
+
 }

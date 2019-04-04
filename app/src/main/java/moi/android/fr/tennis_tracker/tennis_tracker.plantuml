@@ -1,0 +1,267 @@
+@startuml
+
+title __TENNIS_TRACKER's Class Diagram__\n
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class AddPictures {
+          ~ pic : ImageView
+          # onCreate()
+          + onActivityResult()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class DBHelper {
+          {static} + DATABASE_NAME : String
+          {static} + MATCH_TABLE_NAME : String
+          {static} + MATCH_COLUMN_ID : String
+          {static} + MATCH_PLAYER_1 : String
+          {static} + MATCH_PLAYER_2 : String
+          {static} + MATCH_SCORE : String
+          + DBHelper()
+          + onCreate()
+          + onUpgrade()
+          + insertMatch()
+          + insertPicture()
+          + updateMatchScore()
+          + getData()
+          + getLastId()
+          + getAll()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class DbBitmapUtility {
+          {static} + getBytes()
+          {static} + getImage()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class Display_match {
+          + player1_name : TextView
+          + player1_set1 : TextView
+          + player1_set2 : TextView
+          + player1_set3 : TextView
+          + player1_set4 : TextView
+          + player1_set5 : TextView
+          + player2_name : TextView
+          + player2_set1 : TextView
+          + player2_set2 : TextView
+          + player2_set3 : TextView
+          + player2_set4 : TextView
+          + player2_set5 : TextView
+          + Display_match()
+          {static} + newInstance()
+          + onAttach()
+          + onCreate()
+          + onCreateView()
+          + setPlayerName()
+          + setSetScore()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class MainActivity {
+          - drawerLayout : DrawerLayout
+          + res : TextView
+          # onCreate()
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class MapFragment {
+          - mMap : GoogleMap
+          - markerPosition : MarkerOptions
+          - markerClick : MarkerOptions
+          + newInstance()
+          + onCreate()
+          + onCreateView()
+          + getMapAsync()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class local_results {
+          + results : TextView
+          # onCreate()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class main_menu {
+          + b_new_game : Button
+          + b_local_results : Button
+          + b_remote_results : Button
+          + pics : Button
+          + main_menu()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      interface OnKeyListener {
+          {abstract} + onNumberKey()
+          {abstract} + onOperationKey()
+          {abstract} + onEqualKey()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class new_match_pictures {
+          ~ pic : ImageView
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+          + onActivityResult()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class new_match_players {
+          - b_start_game : Button
+          - p1 : EditText
+          - p2 : EditText
+          + new_match_players()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class new_match_score {
+          - b_picture : Button
+          - b_localise : Button
+          - save : Button
+          - b_point_p1 : Button
+          - b_point_p2 : Button
+          - point_1 : TextView
+          - point_2 : TextView
+          - current_set : int
+          - sets_1 : ArrayList<Integer>
+          - sets_2 : ArrayList<Integer>
+          - player_1_nb_set_won : int
+          - player_2_nb_set_won : int
+          - set_1_1 : TextView
+          - set_2_1 : TextView
+          - set_3_1 : TextView
+          - set_4_1 : TextView
+          - set_5_1 : TextView
+          - set_1_2 : TextView
+          - set_2_2 : TextView
+          - set_3_2 : TextView
+          - set_4_2 : TextView
+          - set_5_2 : TextView
+          - victory : boolean
+          - googleMap : GoogleMap
+          + new_match_score()
+          {static} + newInstance()
+          + onCreate()
+          + onCreateView()
+          + onMapReady()
+          + addToSet()
+          + addPoint()
+          + getTextScore()
+          + updateText()
+          + isFinished()
+          + matchToString()
+      }
+    }
+  }
+  
+
+  package  {
+    package moi.android.fr.tennis_tracker {
+      class remote_results {
+          + results : TextView
+          # onCreate()
+      }
+    }
+  }
+  
+
+  AddPictures -up-|> AppCompatActivity
+  AddPictures o-- DBHelper : mydb
+  HostCallbacks -up-|> FragmentHostCallback
+  DBHelper -up-|> SQLiteOpenHelper
+  Display_match -up-|> Fragment
+  SavedState -up-|> Parcelable
+  MainActivity -up-|> AppCompatActivity
+  MainActivity o-- main_menu : f_menu
+  MainActivity o-- DBHelper : mydb
+  HostCallbacks -up-|> FragmentHostCallback
+  MapFragment -up-|> Fragment
+  SavedState -up-|> Parcelable
+  local_results -up-|> AppCompatActivity
+  local_results o-- DBHelper : mydb
+  HostCallbacks -up-|> FragmentHostCallback
+  main_menu -up-|> Fragment
+  main_menu o-- OnKeyListener : buttonPressed
+  main_menu o-- new_match_players : new_match_players
+  main_menu +-down- OnKeyListener
+  SavedState -up-|> Parcelable
+  new_match_pictures -up-|> Fragment
+  new_match_pictures o-- DBHelper : mydb
+  SavedState -up-|> Parcelable
+  new_match_players -up-|> Fragment
+  new_match_players o-- new_match_score : new_match_score
+  new_match_players o-- DBHelper : mydb
+  SavedState -up-|> Parcelable
+  new_match_score -up-|> OnMapReadyCallback
+  new_match_score -up-|> Fragment
+  new_match_score o-- new_match_pictures : new_match_pictures
+  new_match_score o-- DBHelper : mydb
+  new_match_score o-- MapFragment : mapFragment
+  SavedState -up-|> Parcelable
+  remote_results -up-|> AppCompatActivity
+  remote_results o-- DBHelper : mydb
+  HostCallbacks -up-|> FragmentHostCallback
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

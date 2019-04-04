@@ -14,7 +14,7 @@ import android.widget.Button;
 public class main_menu extends Fragment {
 
     public OnKeyListener buttonPressed;
-    public Button b_new_game, b_local_results, b_remote_results;
+    public Button b_new_game, b_local_results, b_remote_results, pics;
     public new_match_players new_match_players;
 
 
@@ -67,6 +67,15 @@ public class main_menu extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(getActivity(), remote_results.class);
+                startActivity(intent2);
+            }
+        });
+
+        pics = v.findViewById(R.id.picture);
+        pics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getActivity(), AddPictures.class);
                 startActivity(intent2);
             }
         });

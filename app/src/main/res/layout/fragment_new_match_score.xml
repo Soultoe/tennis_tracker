@@ -142,13 +142,6 @@
             android:text="Point P2" />
 
         <Button
-            android:id="@+id/picture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dip"
-            android:text="Take pictures" />
-
-        <Button
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

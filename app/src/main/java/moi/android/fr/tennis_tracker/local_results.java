@@ -32,8 +32,8 @@ public class local_results extends AppCompatActivity {
         String name1, name2, score;
 
         for(int i=0; i<array_list.size();i++) {
-            name1 = array_list.get(0).get(1);
-            name2 = array_list.get(0).get(3);
+            name1 = array_list.get(0).get(0);
+            name2 = array_list.get(0).get(1);
             score = array_list.get(0).get(2);
             results.setText(String.format(" %s \n %s \n ", results.getText(), "Player1: " + name1+ "\nPlayer2: " +name2+ "\nScore: " +score));
         }
